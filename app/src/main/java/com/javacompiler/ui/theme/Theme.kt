@@ -7,9 +7,38 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.platform.LocalContext
+val EditorBackground   = Color(0xFF0D1117)
+val EditorSurface      = Color(0xFF161B22)
+val EditorBorder       = Color(0xFF30363D)
+val EditorText         = Color(0xFFE6EDF3)
+val EditorComment      = Color(0xFF8B949E)
+val AccentBlue         = Color(0xFF58A6FF)
+val AccentGreen        = Color(0xFF3FB950)
+val AccentRed          = Color(0xFFFF7B72)
+val AccentYellow       = Color(0xFFE3B341)
+
+private val DarkColors = darkColorScheme(
+    primary          = AccentBlue,
+    background       = EditorBackground,
+    surface          = EditorSurface,
+    onBackground     = EditorText,
+    onSurface        = EditorText,
+    error            = AccentRed,
+    outline          = EditorBorder
+)
+
+@Composable
+fun JavaCompilerTheme(content: @Composable () -> Unit) {
+    MaterialTheme(
+        colorScheme = DarkColors,
+        content = content
+    )
+}
+
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -22,21 +51,12 @@ private val LightColorScheme = lightColorScheme(
     secondary = PurpleGrey40,
     tertiary = Pink40
 
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+
 )
 
 @Composable
 fun JavaCompilerTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
